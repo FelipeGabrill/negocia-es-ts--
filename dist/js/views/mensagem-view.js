@@ -1,7 +1,5 @@
-export class MensagemView {
-    constructor(seletor) {
-        this.element = document.querySelector(seletor);
-    }
+import { View } from "./view.js";
+export class MensagemView extends View {
     templete(model) {
         return `
             <p class="alert alert-info">${model}</p>
@@ -9,6 +7,6 @@ export class MensagemView {
     }
     update(model) {
         const templete = this.templete(model);
-        this.element.innerHTML = templete;
+        this.elemento.innerHTML = templete;
     }
 }

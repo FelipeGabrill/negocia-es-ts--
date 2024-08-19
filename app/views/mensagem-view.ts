@@ -1,19 +1,10 @@
-export class MensagemView {
-    
-    private element: HTMLElement;
-    
-    constructor(seletor: string) {
-        this.element = document.querySelector(seletor);
-    }
+import { View } from "./view.js";
+
+export class MensagemView extends View<string> {
 
     templete(model: string): string {
         return `
             <p class="alert alert-info">${model}</p>
         `
-    }
-
-    update(model: string): void {
-        const templete = this.templete(model);
-        this.element.innerHTML = templete;
     }
 }
