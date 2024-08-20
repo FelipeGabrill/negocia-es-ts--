@@ -5,7 +5,7 @@ export abstract class View<T> {
         this.elemento = document.querySelector(seletor);
     }
 
-    abstract templete(model: T): string;
+    protected abstract templete(model: T): string;
 
     update(model: T): void {
         const templete = this.templete(model);
