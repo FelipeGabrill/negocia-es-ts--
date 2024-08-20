@@ -1,14 +1,21 @@
 export abstract class View<T> {
     protected elemento: HTMLElement;
+    private escapar = false;
 
-    constructor(seletor: string) {
+    constructor(seletor: string, escapar?: boolean) {
         this.elemento = document.querySelector(seletor);
+        if (escapar) {
+            this.escapar = escapar;
+        }
     }
 
     protected abstract templete(model: T): string;
 
     public update(model: T): void {
-        const templete = this.templete(model);
+        let templete = this.templete(model);
+        if (this.escapar) {
+            templete = templete.replace(/<script>[\s\S]*?<\/script>/, '');
+        }
         this.elemento.innerHTML = templete;
     }
 }
